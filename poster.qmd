@@ -18,15 +18,9 @@ format:
 
 ## Introduction
 
-This section introduces the topic of my poster.  It's important to grab the reader's attention here. You can use images, equations, and other Markdown elements.
+Typical tokamak plasmas are low $\beta$ and operate in the low collisionality limit. In this regime the toroidal Ion temperature gradient driven instability or the trapped electron mode is the dominant instability. These instabilities explain turbulent transport in most of the device except maybe near the edge. 
 
-```{r}
-# Example R code chunk (if needed)
-x <- 1:10
-y <- x^2
-plot(x, y)
-
-# Lorem Ipsum Dolor
+# Model
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et collaudata est, cum id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, om- nis dolor repellendus. Temporibus autem quibusdam et.
 
