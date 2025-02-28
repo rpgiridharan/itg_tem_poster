@@ -22,12 +22,6 @@
   // Institution logo.
   $if(institution-logo)$ univ_logo: "$institution-logo$", $endif$
 
-  // Left logo.
-  $if(left-logo)$ left_logo: "$left-logo$", $endif$
-  
-  // Left logo width.
-  $if(left-logo-width)$ left_logo_width: $left-logo-width$, $endif$
-
   // Footer text.
   // For instance, Name of Conference, Date, Location.
   // or Course Name, Date, Instructor.

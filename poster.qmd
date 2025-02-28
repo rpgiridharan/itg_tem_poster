@@ -59,12 +59,12 @@ Linearising the model allows us to determine an optimal $k_z$ that can be used f
 ![$\gamma(k_y,k_{z,i})$](images/gam_vs_ky_kzvals_itg_tem_simple.png)
 :::
  
-### $\gamma(k_y)$ for different $\eta_B$/$\sqrt{\epsilon}$
+### $\gamma(k_y)$ for different $\eta_T$/$\sqrt{\epsilon}$
 
-- The $k_y$ values that maximise $\gamma$ are confined to $<3.8$ (for $$\eta_T scan) and $<2.7$ (for $\sqrt{\epsilon}$ scan). This gives us an idea of the minimum box size ($L_{min}=2\pi/k_{max}$) to be used for non linear simulations of the system.
+- The $k_y$ values that maximise $\gamma$ are confined to $<3.8$ (for $\eta_T$ scan) and $<2.7$ (for $\sqrt{\epsilon}$ scan). This gives us an idea of the minimum box size ($L_{min}=2\pi/k_{max}$) to be used for non linear simulations of the system.
 
-- $\gamma_{max}$ decreases shortly but increases after a threshold in the case of $\eta_T$ while it steadily increases for $\sqrt{\epsilon}$.
-
+- $\gamma_{max}$ decreases shortly but increases after a critical value in the case of $\eta_T$. The value of $k_y$ that maximises $\gamma$ steadily decreases except for the jump at the critical #\eta_T$.
+- $\gamma_{max}$ steadily increases for $\sqrt{\epsilon}$ with a steady decrease in the value of $k_y$ that maximises $\gamma$.
 
 ::: {layout="[[1,1]]"}
 ![for different $\eta_T$](images/gam_vs_ky_eta_vals_itg_tem_simple.png)
@@ -72,7 +72,7 @@ Linearising the model allows us to determine an optimal $k_z$ that can be used f
 ![for different $\sqrt{\epsilon}$](images/gam_vs_ky_sqre_vals_itg_tem_simple.png)
 :::
 
-### $\omega(k_{y,max})$ vs $\eta_B$/$\sqrt{\epsilon}$
+### $\omega(k_{y,max})$ vs $\eta_T$/$\sqrt{\epsilon}$
 
 ::: {layout="[[1,1]]"}
 ![for different $\eta_T$](images/omr_vs_eta_itg_tem_simple.png)
@@ -80,9 +80,9 @@ Linearising the model allows us to determine an optimal $k_z$ that can be used f
 ![for different $\sqrt{\epsilon}$](images/omr_vs_sqre_itg_tem_simple.png)
 :::
 
-## ITG [ivanov]
+## Non-linear ITG simulation 
 
-We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [ivanov, 2020; ivanov, 2021] and simulate the system using a pseudospectral code. 
+We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [ivanov, 2020; ivanov, 2022] and simulate the system using a pseudospectral code. 
 
 - We observe large scale ($k_y=0$) structures (zonal flows)that irregularly oscillate along $x$. 
 ![Fields: $\Omega=\nabla_\perp^2 \phi$, $P$](images/fields_kapt_0_36_chi_0_1.png)
@@ -93,7 +93,7 @@ We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [ivanov
 ![Vorticiy flux](images/Piom_kapt_0_36_chi_0_1.png)
 :::
 
-## ITG Zonal Flow Evolution
+## Flow Evolution
 
 - Zonal flows merge early on and also see that the extremas of zonal flows oscillate in time. 
 - Heat flux's time evolution, including the oscillations, resembles the evolution of the zonal flow minimas.

@@ -20,12 +20,6 @@
   // Lab logo width.
   lab_logo_width: "5",  // In cm
 
-  // Left logo (replaces hardcoded lpp-logo.png)
-  left_logo: "",  // Add this parameter for the left logo
-  
-  // Left logo width
-  left_logo_width: "5",  // Add this parameter for left logo width
-
   // Footer text.
   // For instance, Name of Conference, Date, Location.
   // or Course Name, Date, Instructor.
@@ -38,7 +32,10 @@
   footer_email_ids: "Email IDs (separated by commas)",
 
   // Color of the footer (RGB components as decimals)
-  footer_color: (red: 232, green: 240, blue: 254),  // e8f0fe in RGB
+  footer_color: (red: 51, green: 51, blue: 204),  // Lighter blue (#3333CC)
+  
+  // Theme color (main color for headers)
+  theme_color: (red: 0, green: 51, blue: 153),  // Default darker blue (#003399)
 
   // Additional logos to display in footer
   footer_logos: (),  // Empty default, will be filled by Quarto
@@ -121,15 +118,17 @@
   footer_text_font_size = int(footer_text_font_size) * 0.9pt  // Reduced to 90%
 
   // Define the theme color to be consistent across the poster
-  let theme_color = rgb(footer_color.red, footer_color.green, footer_color.blue)
+  let theme_color = if type(theme_color) == dictionary {
+    rgb(theme_color.red, theme_color.green, theme_color.blue)
+  } else {
+    theme_color  // Assume it's already an RGB value
+  }
   
-  // Create darker version for title and level 1 headings (less transparent)
-  let dark_theme_color = theme_color.darken(10%)
-  
-  // Create lighter version for level 2 headings (more transparent)
-  let light_theme_color = theme_color.lighten(30%)
+  // Define the footer color as a lighter version of theme_color
+  let footer_color_rgb = theme_color.lighten(70%)
 
   // Configure the page.
+  // This poster defaults to 36in x 24in.
   set page(
     width: width,
     height: height,
@@ -145,7 +144,7 @@
   set enum(indent: 10pt, body-indent: 9pt)
   set list(indent: 10pt, body-indent: 9pt)
 
-  // Configure headings with 10% smaller sizes
+  // Configure headings with 10% smaller sizes and white text
   set heading(numbering: none)
   show heading: it => locate(loc => {
     // Find out the final number of the heading counter.
@@ -165,10 +164,11 @@
       #v(45pt, weak: true)  // Reduced from 50pt to 45pt
       #block(
         width: 100%,
-        fill: dark_theme_color,  // Using darker color for level 1
+        fill: theme_color, // Using original theme color (not darkened)
         inset: (x: 13.5pt, y: 9pt),  // Reduced from 15pt,10pt to 13.5pt,9pt
         radius: 4.5pt,  // Reduced from 5pt to 4.5pt
         [
+          #set text(fill: white)  // Set text color to white
           #it.body
         ]
       )
@@ -179,10 +179,11 @@
       #v(28.8pt, weak: true)  // Reduced from 32pt to 28.8pt
       #block(
         width: 100%,
-        fill: light_theme_color,  // Using lighter color for level 2
+        fill: theme_color.lighten(18%), // Lighter theme color
         inset: (x: 10.8pt, y: 7.2pt),  // Reduced from 12pt,8pt to 10.8pt,7.2pt
         radius: 3.6pt,  // Reduced from 4pt to 3.6pt
         [
+          #set text(fill: white)  // Set text color to white
           #it.body
         ]
       )
@@ -205,22 +206,15 @@
     align(center, 
       stack(
         {
-          // Left logo positioned at the top left corner of the title block
-          if left_logo != "" {
-            place(
-              top + left,
-              dx: 10pt,
-              dy: 10pt,
-              image(left_logo, width: int(left_logo_width) * 1cm)
-            )
-          }
+          // Left logo code removed
         },
         block(
           width: 100%,
-          fill: dark_theme_color,  // Using darker color for title block
+          fill: theme_color, // Using original theme color (not darkened)
           radius: 5pt,
           inset: 20pt,
           {
+            set text(fill: white)  // Set text color to white
             text(title_font_size, title)
             linebreak()
             v(0.5em)
@@ -264,7 +258,7 @@
       align(center, {
         block(
           width: auto,
-          fill: theme_color,
+          fill: footer_color_rgb,
           inset: 10.8pt,  // Reduced from 12pt to 10.8pt
           radius: 5.4pt,  // Reduced from 6pt to 5.4pt
           {
