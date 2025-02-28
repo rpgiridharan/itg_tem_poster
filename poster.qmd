@@ -4,7 +4,7 @@ title: ITG & TEM Gyrofluid Model
 format:
   poster-typst: 
     size: "48x67"
-    poster-authors: "Giridharan Paramasivam, Ozgur Gurcan"  # Make sure this matches exactly
+    poster-authors: "Giridharan Paramasivam, Ozgur D. Gurcan"  # Make sure this matches exactly
     departments: "Laboratoire de Physique des Plasmas, Ecole Polytechnique"
     lab_logo: "" 
     lab_logo_width: "5"
@@ -23,10 +23,10 @@ format:
 Typical tokamak plasmas are low $\beta$ and operate in the low collisionality limit. 
 In this regime the toroidal ion temperature gradient driven instability or the trapped 
 electron mode is the dominant instability. These instabilities explain turbulent transport 
-in most of the device except near the edge.
+in most of the device except near the edge. 
 
 ## Model
-We combine the results of [waltz, 1984] and [brizard, 1991] to obtain the four field ($P$, $v_\parallel$, $\phi$, $n_{te}$) model for ITG driven instability and TEM:
+We combine the results of [Waltz *et al.*, 1984] and [Brizard, 1991] to obtain the four field ($P$, $v_\parallel$, $\phi$, $n_{te}$) model for ITG driven instability and TEM:
 $$
 d_tP+\left(1+\eta_{T}\right)\kappa{}_{n}\partial_{y}\phi=-\gamma\nabla_{\parallel}v_{\parallel}
 $$
@@ -50,18 +50,18 @@ where $d_t=\partial_t+\boldsymbol{b}\times\boldsymbol{\nabla}\phi$. $\kappa_n=\r
 
 ## Linear Analysis
 
-Linearising the model allows us to determine an optimal $k_z$ that can be used for simulations and also understand the values of $k_x$ and $k_y$ that maximise $\gamma$.
+Linearising the model allows us to determine an optimal $k_z$ that can be used for simulations and also understand the values of $k_x$ and $k_y$ that maximise $\gamma$. This allows use to have an idea about the size of the box required for the simulation.
 
 ### Growth rate, $\gamma$
-All equations are damped by $D\nabla_\perp^2 X_i + \nu\partial_\parallel^2X_i$. We use $D=5e-3$, $\nu=3e-2$
+All equations are damped by $D\nabla_\perp^2 X_i + \nu\nabla_\parallel^2X_i$ with $D=5\times 10^{-3}$, $\nu=3\times 10^{-2}$
 
 - $\gamma(k_x, k_y)$ is symmetrical about $k_x$ and peaks at around $k_y\approx 1$.
-- There is a max value of kz, depending on $\nu$, upto which $\gamma$ is positive$. $k_z=1$ is chosen later on since it is small enough for most values of $\nu$ used.
+- There is a max value of $k_z$, depending on $\nu$, up to which $\gamma$ is positive. $k_z=1$ is chosen later on for the simulation since it is small enough to not damp instabilities for most values of $\nu$ used.
 
 ::: {layout="[[1,1]]"}
-![$\gamma(k_x,k_y)$](images/gamkxky_itg_tem_simple.png)
+![$\gamma(k_x,k_y)$](images/gamkxky_itg_tem_simple.png){width=100%}
 
-![$\gamma(k_y,k_{z,i})$](images/gamkykz_itg_tem_simple.png)
+![$\gamma(k_y,k_z)$](images/gamkykz_itg_tem_simple.png){width=100%}
 :::
  
 ### $\gamma(k_y)$ for different $\eta_T$/$\sqrt{\epsilon}$
@@ -72,41 +72,60 @@ All equations are damped by $D\nabla_\perp^2 X_i + \nu\partial_\parallel^2X_i$. 
 - $\gamma_{max}$ steadily increases for $\sqrt{\epsilon}$ with a steady decrease in the value of $k_y$ that maximises $\gamma$.
 
 ::: {layout="[[1,1]]"}
-![for different $\eta_T$](images/gam_vs_ky_eta_vals_itg_tem_simple.png)
+![for different $\eta_T$](images/gam_vs_ky_eta_vals_itg_tem_simple.png){width=100%}
 
-![for different $\sqrt{\epsilon}$](images/gam_vs_ky_sqre_vals_itg_tem_simple.png)
+![for different $\sqrt{\epsilon}$](images/gam_vs_ky_sqre_vals_itg_tem_simple.png){width=100%}
 :::
+
+<div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
 
 ### $\omega(k_{y,max})$ vs $\eta_T$/$\sqrt{\epsilon}$
 
-::: {layout="[[1,1]]"}
-![for different $\eta_T$](images/omr_vs_eta_itg_tem_simple.png)
+- The phase velocity of propagation of convective instabilities is $\sim\omega_r/k_y$ which makes $\omega_r$ an interesting quantity to study.
 
-![for different $\sqrt{\epsilon}$](images/omr_vs_sqre_itg_tem_simple.png)
+::: {layout="[[1,1]]"}
+![for different $\eta_T$](images/omr_vs_eta_itg_tem_simple.png){width=70%}
+
+![for different $\sqrt{\epsilon}$](images/omr_vs_sqre_itg_tem_simple.png){width=70%}
 :::
 
 ## 2D ITG simulation 
 
-We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [ivanov, 2020; ivanov, 2022] and simulate the system using a pseudospectral code. 
-
-- We observe large scale ($k_y=0$) structures (zonal flows)that irregularly oscillate along $x$. 
-![Fields: $\Omega=\nabla_\perp^2 \phi$, $P$](images/fields_kapt_0_36_chi_0_1.png)
+We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [Ivanov *et al.*, 2020; Ivanov *et al.*, 2022] and simulate the system using a pseudo-spectral code. We observe large scale ($k_y=0$) structures (zonal flows) that irregularly oscillate along $x$. 
 
 ::: {layout="[[1,1]]"}
-![Heat Flux, $Q=-\langle \partial_y \phi T\rangle$](images/Q_kapt_0_36_chi_0_1.png)
+![Vorticiy, $\Omega=\nabla_\perp^2 \phi$](images/fields_Om_kapt_0_36_chi_0_1.png){width=80%}
 
-![Vorticiy flux](images/Piom_kapt_0_36_chi_0_1.png)
+![Pressure, $P$](images/fields_P_kapt_0_36_chi_0_1.png){width=80%}
+:::
+
+
+::: {layout="[[1,1]]"}
+![Vorticiy flux, $\Pi_\Omega=-\langle \partial_y \nabla_\perp^2\phi\rangle$](images/Piom_kapt_0_36_chi_0_1.png){width=80%}
+
+![Heat Flux, $Q=-\langle \partial_y \phi T\rangle$](images/Q_kapt_0_36_chi_0_1.png){width=80%}
 :::
 
 ## Flow Evolution
 
-- Zonal flows merge early on and also see that the extremas of zonal flows oscillate in time. 
-- Heat flux's time evolution, including the oscillations, resembles the evolution of the zonal flow minimas.
-- Heat flux is faint in region of zonal maximas.
+- Zonal flows merge early on and we also see that the extrema of zonal flows oscillate in time. 
+- Heat flux's time evolution, including the oscillations, resembles the evolution of the zonal flows.
+- The heat flux is minimised in regions of high zonal shear.
 
 ::: {layout="[[1,1]]"}
-![$\partial_y\overline{\phi}$](images/vbar_xt_kapt_0_36_chi_0_1.png)
+![$\partial_y\overline{\phi}$](images/vbar_xt_kapt_0_36_chi_0_1.png){width=100%}
 
-![Heat Flux](images/Q_xt_kapt_0_36_chi_0_1.png)
+![Heat Flux](images/Q_xt_kapt_0_36_chi_0_1.png){width=100%}
 :::
 
+## Conclusion and Perspectives
+
+- Developed 4 field model and solver
+- Reproduced the results of [Ivanov *et al.*, 2020]'s two field model. 
+- Non linear simulation at higher $\kappa_T$. Developing semi implicit solver.
+- Integrate semi implicit solver into the 4 field solver.
+- Study phase transition from 2D turbulence to quasi-1D zonal flow dominated state using 4 field model.
