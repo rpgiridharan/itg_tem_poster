@@ -133,7 +133,7 @@
     width: width,
     height: height,
     margin: 
-      (top: 3.81cm, left: 3.81cm, right: 3.81cm, bottom: 3.81cm)  // Changed from inches to cm
+      (top: 2.54cm, left: 3.81cm, right: 3.81cm, bottom: 2.54cm)  // Changed from inches to cm
   )
 
   // Configure equation numbering and spacing.

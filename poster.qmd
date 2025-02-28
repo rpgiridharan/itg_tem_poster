@@ -53,17 +53,22 @@ where $d_t=\partial_t+\boldsymbol{b}\times\boldsymbol{\nabla}\phi$. $\kappa_n=\r
 Linearising the model allows us to determine an optimal $k_z$ that can be used for simulations and also understand the values of $k_x$ and $k_y$ that maximise $\gamma$.
 
 ### Growth rate, $\gamma$
+All equations are damped by $D\nabla_\perp^2 X_i + \nu\partial_\parallel^2X_i$. We use $D=5e-3$, $\nu=3e-2$
+
+- $\gamma(k_x, k_y)$ is symmetrical about $k_x$ and peaks at around $k_y\approx 1$.
+- There is a max value of kz, depending on $\nu$, upto which $\gamma$ is positive$. $k_z=1$ is chosen later on since it is small enough for most values of $\nu$ used.
+
 ::: {layout="[[1,1]]"}
 ![$\gamma(k_x,k_y)$](images/gamkxky_itg_tem_simple.png)
 
-![$\gamma(k_y,k_{z,i})$](images/gam_vs_ky_kzvals_itg_tem_simple.png)
+![$\gamma(k_y,k_{z,i})$](images/gamkykz_itg_tem_simple.png)
 :::
  
 ### $\gamma(k_y)$ for different $\eta_T$/$\sqrt{\epsilon}$
 
 - The $k_y$ values that maximise $\gamma$ are confined to $<3.8$ (for $\eta_T$ scan) and $<2.7$ (for $\sqrt{\epsilon}$ scan). This gives us an idea of the minimum box size ($L_{min}=2\pi/k_{max}$) to be used for non linear simulations of the system.
 
-- $\gamma_{max}$ decreases shortly but increases after a critical value in the case of $\eta_T$. The value of $k_y$ that maximises $\gamma$ steadily decreases except for the jump at the critical #\eta_T$.
+- $\gamma_{max}$ decreases shortly but increases after a critical value in the case of $\eta_T$. The value of $k_y$ that maximises $\gamma$ steadily decreases except for the jump at the critical $\eta_T$.
 - $\gamma_{max}$ steadily increases for $\sqrt{\epsilon}$ with a steady decrease in the value of $k_y$ that maximises $\gamma$.
 
 ::: {layout="[[1,1]]"}
@@ -80,7 +85,7 @@ Linearising the model allows us to determine an optimal $k_z$ that can be used f
 ![for different $\sqrt{\epsilon}$](images/omr_vs_sqre_itg_tem_simple.png)
 :::
 
-## Non-linear ITG simulation 
+## 2D ITG simulation 
 
 We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [ivanov, 2020; ivanov, 2022] and simulate the system using a pseudospectral code. 
 
