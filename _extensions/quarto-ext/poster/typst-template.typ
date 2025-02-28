@@ -276,7 +276,7 @@
                 columns: (auto,) * logos.len(),
                 gutter: 16pt,  // Reduced from 18pt to 16pt
                 ..logos.map(logo => {
-                  image(logo, height: 1.5cm)  // Reduced from 2cm to 1.5cm
+                  image(logo, height: 1.6cm)  // Reduced from 2cm to 1.5cm
                 })
               )
             }

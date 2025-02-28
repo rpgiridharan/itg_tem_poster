@@ -16,6 +16,8 @@ format:
       - "images/upsud-logo.png"
       - "images/sorbonne-logo.png"
       - "images/odp-logo.png"
+    embed-fonts: true
+    latex-engine: xelatex  # Add this line to specify the LaTeX engine
 
 ---
 
