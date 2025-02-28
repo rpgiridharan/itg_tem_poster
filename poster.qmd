@@ -1,93 +1,105 @@
 ---
-title: ITG & TE Gyrofluid Model
+title: ITG & TEM Gyrofluid Model
+
 format:
   poster-typst: 
     size: "48x67"
-    poster-authors: "Giridharan Paramasivam"  # Make sure this matches exactly
+    poster-authors: "Giridharan Paramasivam, Ozgur Gurcan"  # Make sure this matches exactly
     departments: "Laboratoire de Physique des Plasmas, Ecole Polytechnique"
-    lab_logo: "./images/lpp-logo.png"
+    lab_logo: "" 
     lab_logo_width: "5"
     footer_color: {red: 232, green: 240, blue: 254}  # e8f0fe
     footer_logos: 
+      - "images/lpp-logo.png"
       - "images/cnrs-logo.png"
       - "images/ecole-polytechnique-logo.png"
       - "images/upsud-logo.png"
       - "images/sorbonne-logo.png"
       - "images/odp-logo.png"
+
 ---
 
 ## Introduction
+Typical tokamak plasmas are low $\beta$ and operate in the low collisionality limit. 
+In this regime the toroidal ion temperature gradient driven instability or the trapped 
+electron mode is the dominant instability. These instabilities explain turbulent transport 
+in most of the device except near the edge.
 
-Typical tokamak plasmas are low $\beta$ and operate in the low collisionality limit. In this regime the toroidal Ion temperature gradient driven instability or the trapped electron mode is the dominant instability. These instabilities explain turbulent transport in most of the device except maybe near the edge. 
+## Model
+We combine the results of [waltz, 1984] and [brizard, 1991] to obtain the four field ($P$, $v_\parallel$, $\phi$, $n_{te}$) model for ITG driven instability and TEM:
+$$
+d_tP+\left(1+\eta_{T}\right)\kappa{}_{n}\partial_{y}\phi=-\gamma\nabla_{\parallel}v_{\parallel}
+$$
+$$
+d_tv_{\parallel}=-\nabla_{\parallel}\left(P+\phi\right)
+$$
+$$
+\begin{aligned}
+d_t\left(\left(1-\sqrt{\epsilon}\right)\tau\widetilde{\phi}-\nabla_{\perp}^{2}\phi\right) 
+&+ \boldsymbol{\nabla}_{\perp}\cdot\left\{ \boldsymbol{\nabla}_{\perp}\phi,p\right\} 
++\ \left(1-\sqrt{\epsilon}\right)\kappa_{n}\partial_{y}\phi \\
+&+\left(1+\eta_{T}\right)\kappa_{n}\partial_{y}\nabla_{\perp}^{2}\phi 
+-2\eta_{B}\kappa_{n}\partial_{y}\left(P+n_{te}/\tau\right) \\
+&= -\nu_{eff}\left(\sqrt{\epsilon}\tau\phi-n_{te}\right)-\nabla_{\parallel}v_{\parallel}
+\end{aligned}
+$$
+$$
+d_tn_{te}+\sqrt{\epsilon}\kappa_{n}\partial_{y}\phi=\nu_{eff}\left(\sqrt{\epsilon}\tau\phi-n_{te}\right)
+$$
+where $d_t=\partial_t+\boldsymbol{b}\times\boldsymbol{\nabla}\phi$. $\kappa_n=\rho_i L_n^{-1}$, $\eta_T=L_T^{-1}/L_n^{-1}$ and $\eta_B=L_B^{-1}/L_n^{-1}$ characterize the equilibrium density gradient, equilibrium temperature gradient and the magnetic field gradient respectively. The model presented above makes the small $\eta_B$ assumption which is physically reasonable considering $a/R$ is small in tokamaks.
 
-# Model
+## Linear Analysis
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et collaudata est, cum id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, om- nis dolor repellendus. Temporibus autem quibusdam et.
+Linearising the model allows us to determine an optimal $k_z$ that can be used for simulations and also understand the values of $k_x$ and $k_y$ that maximise $\gamma$.
 
-![Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.](./images/Rosetta_stone.png){width="50%"}
+### Growth rate ($\gamma$)
+::: {layout="[[1,1]]"}
+![$\gamma(k_x,k_y)$](images/gamkxky_itg_tem_simple.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non pos- sit. At.
-
-# Lorem ipsum
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri.
-
-1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut.
-
-| Lorem ipsum dolor sit. | Lorem ipsum. | Lorem ipsum. |
-|------------------------|--------------|--------------|
-| Lorem ipsum dolor.     | Lorem ipsum. | $\alpha$     |
-| Lorem ipsum.           | Lorem ipsum. | $\beta$      |
-| Lorem.                 | Lorem.       | $\gamma$     |
-| Lorem ipsum dolor.     | Lorem.       | $\theta$     |
-
-: Lorem ipsum dolor sit amet {#tbl-1}
-
-Lorem @tbl-1 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et.
-
-## Lorem ipsum dolor sit amet
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre.
-
-![Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.](./images/Standard_lettering.png){width="100%"}
-
-# Lorem ipsum dolor.
-
-::: {.block fill="luma(230)" inset="8pt" radius="4pt"}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplifi- carique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et.
-
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-
+![$\gamma(k_y,k_{z,i})$](images/gam_vs_ky_kzvals_itg_tem_simple.png)
 :::
 
-## Lorem ipsum etiam
+- 
+### $\gamma(k_y)$ for different $\eta_B$/$\sqrt{\epsilon}$
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. 
+-The $k_y$ values that maximise $\gamma$ are confined to $<3.8$ and $<2.7$. This gives us an idea of the minimum box size ($L_{min}=2\pi/k_{max}$) to be used for non linear simulations of the system.
 
-## Lorem ipsum possimus
+-$\gamma_{max}$ decreases shortly but increases after a threshold in the case of $\eta_T$ while it steadily increases for $\sqrt{\epsilon}$.
 
-Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et collaudata est, cum id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, om- nis dolor repellendus. Temporibus autem quibusdam et.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. 
+::: {layout="[[1,1]]"}
+![for different $\eta_T$](images/gam_vs_ky_eta_vals_itg_tem_simple.png)
 
-![Temperature and ozone level](images/fig-airquality-1.svg)
+![for different $\sqrt{\epsilon}$](images/gam_vs_ky_sqre_vals_itg_tem_simple.png)
+:::
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri amplificarique non possit. At etiam Athenis, ut e patre audiebam facete et urbane Stoicos irridente, statua est in quo a nobis philosophia defensa et collaudata est, cum id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, om- nis dolor repellendus. Temporibus autem quibusdam et.
+### $\omega(k_{y,max})$ vs $\eta_B$/$\sqrt{\epsilon}$
 
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
-  - Lorem ipsum dolor sit amet.
-  -  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-  - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed. 
-  - Lorem ipsum dolor sit amet, consectetur adipiscing.
+::: {layout="[[1,1]]"}
+![for different $\eta_T$](images/omr_vs_eta_itg_tem_simple.png)
 
-$$
-\sum_(k=1)^n k = \frac{(n(n+1))}{2} = \frac{(n^2 + n)}{2}
-$$
+![for different $\sqrt{\epsilon}$](images/omr_vs_sqre_itg_tem_simple.png)
+:::
+
+## ITG [ivanov]
+
+We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [ivanov, 2020; ivanov, 2021] and simulate the system using a pseudospectral code.
+
+![Fields: $\Omega=\nabla_\perp^2 \phi$, $P$](images/fields_kapt_0_36_chi_0_1.png)
+
+::: {layout="[[1,1]]"}
+![Heat Flux, $Q=-\langle \partial_y \phi T\rangle$](images/Q_kapt_0_36_chi_0_1.png)
+
+![Vorticiy flux](images/Piom_kapt_0_36_chi_0_1.png)
+:::
+
+## ITG Zonal Flow Evolution
+
+Zonal flows are $k_y=k_z=0$ modes. We observe that zonal flows merge early on and also see that the extremas of zonal flows oscillate in time. Heat flux's evolution resembles the evolution of the zonal flow minimas.  
+
+::: {layout="[[1,1]]"}
+![$\partial_y\overline{\phi}$](images/vbar_xt_kapt_0_36_chi_0_1.png)
+
+![Heat Flux](images/Q_xt_kapt_0_36_chi_0_1.png)
+:::
+
