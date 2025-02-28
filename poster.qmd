@@ -88,21 +88,20 @@ All equations are damped by $D\nabla_\perp^2 X_i + \nu\nabla_\parallel^2X_i$ wit
 - The phase velocity of propagation of convective instabilities is $\sim\omega_r/k_y$ which makes $\omega_r$ an interesting quantity to study.
 
 ::: {layout="[[1,1]]"}
-![for different $\eta_T$](images/omr_vs_eta_itg_tem_simple.png){width=70%}
+![for different $\eta_T$](images/omr_vs_eta_itg_tem_simple.png){width=80%}
 
-![for different $\sqrt{\epsilon}$](images/omr_vs_sqre_itg_tem_simple.png){width=70%}
+![for different $\sqrt{\epsilon}$](images/omr_vs_sqre_itg_tem_simple.png){width=80%}
 :::
 
 ## 2D ITG simulation 
 
-We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [Ivanov *et al.*, 2020; Ivanov *et al.*, 2022] and simulate the system using a pseudo-spectral code. We observe large scale ($k_y=0$) structures (zonal flows) that irregularly oscillate along $x$. 
+We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [Ivanov *et al.*, 2020; Ivanov *et al.*, 2022] and simulate the system using a pseudo-spectral code. We observe large scale ($k_y=0$) structures (zonal flows) that irregularly oscillate along $x$. The four following plots are generated at the final time step.
 
 ::: {layout="[[1,1]]"}
 ![Vorticiy, $\Omega=\nabla_\perp^2 \phi$](images/fields_Om_kapt_0_36_chi_0_1.png){width=80%}
 
 ![Pressure, $P$](images/fields_P_kapt_0_36_chi_0_1.png){width=80%}
 :::
-
 
 ::: {layout="[[1,1]]"}
 ![Vorticiy flux, $\Pi_\Omega=-\langle \partial_y \nabla_\perp^2\phi\rangle$](images/Piom_kapt_0_36_chi_0_1.png){width=80%}
@@ -117,14 +116,14 @@ We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [Ivanov
 - The heat flux is minimised in regions of high zonal shear.
 
 ::: {layout="[[1,1]]"}
-![$\partial_y\overline{\phi}$](images/vbar_xt_kapt_0_36_chi_0_1.png){width=100%}
+![Zonal $\text{E}\times \text{B}$ velocity, $\partial_y\overline{\phi}$](images/vbar_xt_kapt_0_36_chi_0_1.png){width=100%}
 
-![Heat Flux](images/Q_xt_kapt_0_36_chi_0_1.png){width=100%}
+![Heat Flux, $Q=-\langle \partial_y \phi T\rangle$](images/Q_xt_kapt_0_36_chi_0_1.png){width=100%}
 :::
 
 ## Conclusion and Perspectives
 
-- Developed 4 field model and solver
+- Developed 4 field model and solver.
 - Reproduced the results of [Ivanov *et al.*, 2020]'s two field model. 
 - Non linear simulation at higher $\kappa_T$. Developing semi implicit solver.
 - Integrate semi implicit solver into the 4 field solver.

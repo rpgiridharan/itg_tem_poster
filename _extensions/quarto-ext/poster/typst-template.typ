@@ -125,7 +125,7 @@
   }
   
   // Define the footer color as a lighter version of theme_color
-  let footer_color_rgb = theme_color.lighten(80%)
+  let footer_color_rgb = theme_color.lighten(90%)
 
   // Configure the page.
   // This poster defaults to 36in x 24in.
