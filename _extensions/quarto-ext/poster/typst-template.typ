@@ -80,8 +80,8 @@
   // The poster's content.
   body,
 ) = {
-  // Set the body font.
-  set text(font: "STIX Two Text", size: 16pt)
+  // Set the body font with 10% smaller size
+  set text(font: "STIX Two Text", size: 14.4pt)  // Reduced from 16pt to 14.4pt (90%)
   let sizes = size.split("x")
   
   let width = 36cm
@@ -114,17 +114,22 @@
   }
   
   lab_logo_width = int(lab_logo_width) * 1cm   // Changed from in to cm
-  title_font_size = int(title_font_size) * 1pt
-  authors_font_size = int(authors_font_size) * 1pt
+  title_font_size = int(title_font_size) * 0.9pt  // Reduced to 90%
+  authors_font_size = int(authors_font_size) * 0.9pt  // Reduced to 90%
   num_columns = int(num_columns)
-  footer_url_font_size = int(footer_url_font_size) * 1pt
-  footer_text_font_size = int(footer_text_font_size) * 1pt
+  footer_url_font_size = int(footer_url_font_size) * 0.9pt  // Reduced to 90%
+  footer_text_font_size = int(footer_text_font_size) * 0.9pt  // Reduced to 90%
 
   // Define the theme color to be consistent across the poster
   let theme_color = rgb(footer_color.red, footer_color.green, footer_color.blue)
+  
+  // Create darker version for title and level 1 headings (less transparent)
+  let dark_theme_color = theme_color.darken(10%)
+  
+  // Create lighter version for level 2 headings (more transparent)
+  let light_theme_color = theme_color.lighten(30%)
 
   // Configure the page.
-  // This poster defaults to 36in x 24in.
   set page(
     width: width,
     height: height,
@@ -140,7 +145,7 @@
   set enum(indent: 10pt, body-indent: 9pt)
   set list(indent: 10pt, body-indent: 9pt)
 
-  // Configure headings.
+  // Configure headings with 10% smaller sizes
   set heading(numbering: none)
   show heading: it => locate(loc => {
     // Find out the final number of the heading counter.
@@ -151,31 +156,45 @@
       1
     }
 
-    set text(24pt, weight: 400)
+    set text(21.6pt, weight: 400)  // Reduced from 24pt to 21.6pt
     if it.level == 1 [
       // First-level headings are centered smallcaps.
       #set align(center)
-      #set text({ 32pt })
+      #set text({ 28.8pt })  // Reduced from 32pt to 28.8pt
       #show: smallcaps
-      #v(50pt, weak: true)
+      #v(45pt, weak: true)  // Reduced from 50pt to 45pt
       #block(
         width: 100%,
-        fill: theme_color,
-        inset: (x: 15pt, y: 10pt),
-        radius: 5pt,
+        fill: dark_theme_color,  // Using darker color for level 1
+        inset: (x: 13.5pt, y: 9pt),  // Reduced from 15pt,10pt to 13.5pt,9pt
+        radius: 4.5pt,  // Reduced from 5pt to 4.5pt
         [
           #it.body
         ]
       )
-      #v(20pt, weak: true)
+      #v(18pt, weak: true)  // Reduced from 20pt to 18pt
     ] else if it.level == 2 [
-      // Second-level headings are run-ins.
-      #set text(style: "italic")
-      #v(32pt, weak: true)
+      // Second-level headings are also in blocks but with different styling
+      #set text({ 23.4pt })  // Reduced from 26pt to 23.4pt
+      #v(28.8pt, weak: true)  // Reduced from 32pt to 28.8pt
+      #block(
+        width: 100%,
+        fill: light_theme_color,  // Using lighter color for level 2
+        inset: (x: 10.8pt, y: 7.2pt),  // Reduced from 12pt,8pt to 10.8pt,7.2pt
+        radius: 3.6pt,  // Reduced from 4pt to 3.6pt
+        [
+          #it.body
+        ]
+      )
+      #v(13.5pt, weak: true)  // Reduced from 15pt to 13.5pt
+    ] else if it.level == 3 [
+      // Third-level headings with simpler styling
+      #set text(size: 18pt, weight: "bold")  // Reduced from 20pt to 18pt
+      #v(18pt, weak: true)  // Reduced from 20pt to 18pt
       #it.body
-      #v(10pt, weak: true)
+      #v(9pt, weak: true)  // Reduced from 10pt to 9pt
     ] else [
-      // Third level headings are run-ins too, but different.
+      // Level 4+ headings
       _#(it.body):_
     ]
   })
@@ -198,7 +217,7 @@
         },
         block(
           width: 100%,
-          fill: theme_color,
+          fill: dark_theme_color,  // Using darker color for title block
           radius: 5pt,
           inset: 20pt,
           {
@@ -217,15 +236,15 @@
   })
 
   // Create a grid with the main content in columns
-  block(width: 100%, height: 100% - 10cm, {  // Fixed: replaced calc.subtract with direct subtraction
+  block(width: 100%, height: 100% - 9cm, {  // Reduced from 10cm to 9cm
     // Main content area with fixed height to leave room for footer
-    columns(num_columns, gutter: 2em, {
+    columns(num_columns, gutter: 1.8em, {  // Reduced from 2em to 1.8em
       set par(justify: true, first-line-indent: 0em)
-      show par: set block(spacing: 0.65em)
+      show par: set block(spacing: 0.585em)  // Reduced from 0.65em to 0.585em
 
       // Display the keywords.
       if keywords != () [
-        set text(24pt, weight: 400)
+        set text(21.6pt, weight: 400)  // Reduced from 24pt to 21.6pt
         show "Keywords": smallcaps
         *Keywords* --- keywords.join(", ")
       ]
@@ -246,13 +265,13 @@
         block(
           width: auto,
           fill: theme_color,
-          inset: 12pt,  // Further reduced from 15pt
-          radius: 6pt,  // Further reduced radius
+          inset: 10.8pt,  // Reduced from 12pt to 10.8pt
+          radius: 5.4pt,  // Reduced from 6pt to 5.4pt
           {
             // Add lab logo to footer if provided
             if lab_logo != "" {
-              image(lab_logo, width: int(lab_logo_width) * 0.8cm)  // Reduced to 80%
-              v(0.5em)  // Further reduced vertical spacing
+              image(lab_logo, width: int(lab_logo_width) * 0.72cm)  // Reduced from 0.8cm to 0.72cm
+              v(0.45em)  // Reduced from 0.5em to 0.45em
             }
             
             // Add footer logos if provided
@@ -260,8 +279,8 @@
             if logos.len() > 0 {
               grid(
                 columns: (auto,) * logos.len(),
-                gutter: 20pt,  // Further reduced from 25pt
-                ..logos.map(logo => image(logo, height: 2cm))  // Reduced to 80% of original 2.5cm
+                gutter: 18pt,  // Reduced from 20pt to 18pt
+                ..logos.map(logo => image(logo, height: 1.8cm))  // Reduced from 2cm to 1.8cm
               )
             }
           }

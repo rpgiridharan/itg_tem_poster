@@ -52,19 +52,18 @@ where $d_t=\partial_t+\boldsymbol{b}\times\boldsymbol{\nabla}\phi$. $\kappa_n=\r
 
 Linearising the model allows us to determine an optimal $k_z$ that can be used for simulations and also understand the values of $k_x$ and $k_y$ that maximise $\gamma$.
 
-### Growth rate ($\gamma$)
+### Growth rate, $\gamma$
 ::: {layout="[[1,1]]"}
 ![$\gamma(k_x,k_y)$](images/gamkxky_itg_tem_simple.png)
 
 ![$\gamma(k_y,k_{z,i})$](images/gam_vs_ky_kzvals_itg_tem_simple.png)
 :::
-
-- 
+ 
 ### $\gamma(k_y)$ for different $\eta_B$/$\sqrt{\epsilon}$
 
--The $k_y$ values that maximise $\gamma$ are confined to $<3.8$ and $<2.7$. This gives us an idea of the minimum box size ($L_{min}=2\pi/k_{max}$) to be used for non linear simulations of the system.
+- The $k_y$ values that maximise $\gamma$ are confined to $<3.8$ (for $$\eta_T scan) and $<2.7$ (for $\sqrt{\epsilon}$ scan). This gives us an idea of the minimum box size ($L_{min}=2\pi/k_{max}$) to be used for non linear simulations of the system.
 
--$\gamma_{max}$ decreases shortly but increases after a threshold in the case of $\eta_T$ while it steadily increases for $\sqrt{\epsilon}$.
+- $\gamma_{max}$ decreases shortly but increases after a threshold in the case of $\eta_T$ while it steadily increases for $\sqrt{\epsilon}$.
 
 
 ::: {layout="[[1,1]]"}
@@ -83,8 +82,9 @@ Linearising the model allows us to determine an optimal $k_z$ that can be used f
 
 ## ITG [ivanov]
 
-We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [ivanov, 2020; ivanov, 2021] and simulate the system using a pseudospectral code.
+We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [ivanov, 2020; ivanov, 2021] and simulate the system using a pseudospectral code. 
 
+- We observe large scale ($k_y=0$) structures (zonal flows)that irregularly oscillate along $x$. 
 ![Fields: $\Omega=\nabla_\perp^2 \phi$, $P$](images/fields_kapt_0_36_chi_0_1.png)
 
 ::: {layout="[[1,1]]"}
@@ -95,7 +95,9 @@ We ignore trapped electrons and set $\kappa_n=0$ to obtain a model as in [ivanov
 
 ## ITG Zonal Flow Evolution
 
-Zonal flows are $k_y=k_z=0$ modes. We observe that zonal flows merge early on and also see that the extremas of zonal flows oscillate in time. Heat flux's evolution resembles the evolution of the zonal flow minimas.  
+- Zonal flows merge early on and also see that the extremas of zonal flows oscillate in time. 
+- Heat flux's time evolution, including the oscillations, resembles the evolution of the zonal flow minimas.
+- Heat flux is faint in region of zonal maximas.
 
 ::: {layout="[[1,1]]"}
 ![$\partial_y\overline{\phi}$](images/vbar_xt_kapt_0_36_chi_0_1.png)
