@@ -3,12 +3,12 @@ title: ITG & TEM Gyrofluid Model
 
 format:
   poster-typst: 
-    size: "23x32"  # Reduced from 33x46 to 23x32
-    poster-authors: "Giridharan Paramasivam, Ozgur D. Gurcan"
+    size: "48x67"
+    poster-authors: "Giridharan Paramasivam, Ozgur D. Gurcan"  # Make sure this matches exactly
     departments: "Laboratoire de Physique des Plasmas, Ecole Polytechnique"
     lab_logo: "" 
-    lab_logo_width: "3"  # Reduced from 5 to 3
-    footer_color: {red: 232, green: 240, blue: 254}
+    lab_logo_width: "5"
+    footer_color: {red: 232, green: 240, blue: 254}  # e8f0fe
     footer_logos: 
       - "images/lpp-logo.png"
       - "images/cnrs-logo.png"
@@ -17,7 +17,7 @@ format:
       - "images/sorbonne-logo.png"
       - "images/odp-logo.png"
     embed-fonts: true
-    latex-engine: xelatex
+    latex-engine: xelatex  # Add this line to specify the LaTeX engine
 
 ---
 
@@ -79,7 +79,11 @@ All equations are damped by $D\nabla_\perp^2 X_i + \nu\nabla_\parallel^2X_i$ wit
 ![for different $\sqrt{\epsilon}$](images/gam_vs_ky_sqre_vals_itg_tem_simple.png){width=100%}
 :::
 
-<!-- <div style="page-break-before: always;"></div> -->
+<div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
 
 ### $\omega(k_{y,max})$ vs $\eta_T$/$\sqrt{\epsilon}$
 
